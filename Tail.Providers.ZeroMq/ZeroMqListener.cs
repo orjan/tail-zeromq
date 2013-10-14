@@ -6,8 +6,8 @@ using ZeroMQ;
 
 namespace Tail.Providers.ZeroMq
 {
-    public class ZeroMqListener : TailListener<ZeroMqContext>
-	{
+    public class ZeroMqListener : TailStreamListener<ZeroMqContext>
+    {
         public override void Listen(ZeroMqContext context, ITailCallback callback, WaitHandle abortSignal)
         {
             using (var mqContext = ZmqContext.Create())
@@ -19,11 +19,11 @@ namespace Tail.Providers.ZeroMq
 
                     while (!abortSignal.WaitOne(0))
                     {
-                        var receive = reciever.Receive(Encoding.UTF8);
+                        string receive = reciever.Receive(Encoding.UTF8);
                         callback.Publish(receive + Environment.NewLine);
                     }
                 }
             }
         }
-	}
+    }
 }

@@ -2,23 +2,23 @@
 
 namespace Tail.Providers.ZeroMq
 {
-	public sealed class ZeroMqContext : ITailContext
-	{
-		private readonly string _url;
+    public sealed class ZeroMqContext : ITailStreamContext
+    {
+        private readonly string url;
 
         public ZeroMqContext(string url)
         {
-            _url = url;
+            this.url = url;
         }
 
         public string Url
-		{
-			get { return _url; }
-		}
+        {
+            get { return url; }
+        }
 
-		public string GetDescription()
-		{
+        public string GetDescription()
+        {
             return Url;
-		}
-	}
+        }
+    }
 }

@@ -35,7 +35,7 @@ namespace Tail.Providers.ZeroMq.ViewModels
 			return true;
 		}
 
-		public ITailContext GetContext()
+        public ZeroMqContext GetContext()
 		{
 			return new ZeroMqContext(_url);
 		}
